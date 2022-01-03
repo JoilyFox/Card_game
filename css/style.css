@@ -1,0 +1,406 @@
+/*Technical styles*/
+
+.absolute {
+    position: absolute;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.none {
+    display: none;
+}
+
+/* --- */
+
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Sora', sans-serif;
+}
+body::before {
+    content: '';
+    position: absolute;
+    background-image: url(../assets/img/bgnew.jpg);
+    background-size: cover;
+    width: 140vw;
+    height: 140vh;
+    left: -20%;
+    top: -20%;
+    filter: blur(5px);
+    z-index: -10;
+}
+body::after {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    opacity: .5;
+    z-index: -9;
+}
+
+main {
+    width: 100vh;
+    position: relative;
+
+    margin: auto;
+}
+
+.main {
+    height: 100vh;
+    background-image: url(../assets/img/bgnew.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 50px rgba(0,0,0,0.3);
+}
+
+.main > .coins {
+    position: absolute;
+    right: 3vh;
+    top: 46vh;
+    transform: skew(-17deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: right;
+}
+#coins span { 
+    transition: .6s background, .6s color;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5px 40px;
+    font-size: 30px;
+    filter: drop-shadow(10px 20px 0px #000000);
+    font-weight: bold;
+}
+#coins span.text {
+    padding: 5px 20px;
+}
+#coins span.amount {
+    padding: 5px 20px;
+    margin-left: 6px;
+    font-size: 36px;
+}
+.coins.active span {
+    transition: .1s background, .1s color !important;
+    background-color: #f00 !important;
+    color: white !important;
+}
+.coins.z {
+    z-index: 5;
+}
+
+.cardOnField {
+    position: absolute;
+    width: 260px;
+    filter: drop-shadow(20px 30px 0px #000000);
+}
+.cardOnField .cardStatsImg,
+.cardOnField .cardStats {
+    transform-origin: bottom left;
+    transform: scale(1.2);
+    bottom: 16%;
+}
+.cardOnField .cardStats {
+    left: 27.5%;
+    bottom: 18%;
+}
+
+
+#enemyCard {
+    top: 5%;
+    left: 5%;
+    transform-origin: top left;
+}
+#enemyChosenCard {
+    transform: translateX(0vh) translateY(0vh) rotate(0deg);
+    transition: .3s transform;
+}
+#enemyChosenCard.hidden {
+    transform: translateX(30vh) translateY(-100vh) rotate(50deg);
+    /*transition: 0s transform;*/
+}
+
+@media (max-height: 500px) { 
+    #enemyChosenCard.hidden {
+        transform: translateX(30vh) translateY(-150vh) rotate(50deg);
+    }
+}
+@media (max-height: 350px) { 
+    #enemyChosenCard.hidden {
+        transform: translateX(30vh) translateY(-200vh) rotate(50deg);
+    }
+}
+
+
+#yourCard {
+    bottom: 5%;
+    right: 5%;
+    transform-origin: bottom right;
+}
+
+.hud {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    transform: scale(1);
+}
+.yourHud {
+    bottom: 8%;
+    left: 8%;
+    transform-origin: bottom left;
+}
+.enemyHud {
+    top: 4%;
+    right: 16%;
+    transform-origin: top right;
+}
+.hud .avatar {
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 500px;
+    filter: drop-shadow(12px 40px 0px #000000);
+    border: 5px black solid;
+}
+.hud .avatar img{
+    width: 100%;
+}
+.hud .name {
+    z-index: 3;
+    font-weight: 700;
+    position: absolute;
+    bottom: 30px;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5px 40px;
+    font-size: 30px;
+    white-space: nowrap;
+    filter: drop-shadow(10px 20px 0px #000000);
+    transform: skew(-17deg);
+}
+.hud .score {
+    z-index: 1;
+    position: absolute;
+    top: 15px;
+    right: -90px;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5px 20px 5px 80px;
+    font-size: 20px;
+    white-space: nowrap;
+    filter: drop-shadow(10px 20px 0px #000000);
+    transform: skew(-17deg);
+    font-weight: 700;
+}
+/*.hud .coins {
+    z-index: 1;
+    position: absolute;
+    top: 25px;
+    right: -85px;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5px 20px 5px 80px;
+    font-size: 20px;
+    white-space: nowrap;
+    filter: drop-shadow(10px 20px 0px #000000);
+    transform: skew(-17deg) scale(1.3);
+    transform-origin: left;
+    font-weight: 700;
+    transition: 1s background, .6s color;
+}*/
+
+
+.hud .health {
+    z-index: 4;
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    height: 20px;
+    width: 200px;
+    background-color: #fff;
+    filter: drop-shadow(10px 20px 0px #000000);
+    transform: skew(-17deg);
+    display: flex;
+}
+.hud .health span {
+    margin: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background-color: rgb(102, 189, 80);
+    transition: .3s;
+    transform-origin: left;
+}
+
+
+.cardsInHand {
+    transition: .3s;
+    justify-content: flex-start;
+    position: absolute;
+    width: 433px;
+    height: 153px;
+    display: flex;
+    flex-direction: row;
+    bottom: 5%;
+    right: 27%;
+    transform-origin: right bottom;
+}
+.cardsInHand .card {
+    transform: rotate(15deg);
+    z-index: 20;
+    width: 25%;
+    margin-right: -13%;
+    filter: drop-shadow(10px 15px 0px #000000);
+    cursor: pointer;
+    transition: .3s;
+    transform-origin: bottom;
+}
+
+
+.cardsInHand .card.performance {
+    position: absolute;
+    transform: scale(1.79) translateX(70%) translateY(-90%);
+}
+.cardsInHand .card.active {
+    bottom: 0.2px;
+    position: absolute;
+    transform: scale(2.5) translate(179%);
+    filter: drop-shadow(8.8px 12.8px 0px #000000) !important;
+}
+
+
+.cardsInHand.choseCard {
+    justify-content: center;
+    right: 25% !important;
+    bottom: 15% !important;
+}
+.cardsInHand.choseCard .card:hover {
+    z-index: 21 !important;
+    transform: scale(2.5) !important;
+}
+.cardsInHand.choseCard .card:active {
+    transform: scale(2.2) !important;
+}
+
+#yourCardsInHand.cardsInHand.choseCard .card:first-child {
+    transform-origin: bottom right;
+    transform: scale(2) rotate(-15deg);
+    z-index: 19;
+}
+#yourCardsInHand.cardsInHand.choseCard .card {
+    transform-origin: bottom;
+    transform: scale(2);
+    z-index: 20;
+    margin-right: 2%;
+}
+#yourCardsInHand.cardsInHand.choseCard .card:last-child {
+    transform-origin: bottom left;
+    transform: scale(2) rotate(15deg);
+    z-index: 19;
+}
+
+
+
+.timer {
+    position: absolute;
+    top: 5%;
+    right: 45%;
+    font-size: 60px;
+    filter: drop-shadow(5px 9px 0px #000000);
+    color: white;
+    transform: skew(-17deg);
+    font-family: 'Sora', sans-serif;
+    font-weight: 900;
+    z-index: 15;
+    transition: .3s;
+    opacity: 0;
+    /*background-color: #fff;
+    padding: 5px 40px;*/
+}
+
+.alert {
+    transition: .3s;
+    opacity: 0;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+}
+.alert span {
+    transform: skew(-17deg);
+    font-size: 80px;
+    filter: drop-shadow(8px 15px 0px #000000);
+    color: white;
+    transform: skew(-17deg);
+    font-weight: 900;
+    text-align: center;
+    overflow: hidden;
+}
+
+
+
+
+
+
+/* -------- Card styles -------- */
+
+span.card {
+    display: flex;
+    position: relative;
+    object-fit: contain;
+}
+
+.cardImgRaw {
+    width: 100%;
+}
+
+.cardStatsImg {
+    position: absolute;
+    width: 23%;
+    bottom: 18%;
+    left: 13%;
+}
+
+.cardStats {
+    text-align: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 74px;
+    left: 25%;
+}
+
+.cardStats span {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.cardsInHand .cardStatsImg {
+    width: 27%;
+    bottom: 16%;
+}
+
+.cardsInHand .cardStats {
+    bottom: 27px;
+    left: 27%;
+}
+
+.cardsInHand .cardStats span {
+    margin-top: 3.2px;
+    font-size: 11px;
+}

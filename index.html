@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Test</title>
+  <meta name="description" content="Great Battle">
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main>
+        <!-- Fight -->
+
+        <div class="fight">
+
+            <div class="alert" id="alert">
+                <span class="alertSpan"></span>
+            </div>
+            <span class="timer" id="timer"></span>
+
+            <div class="fight-group">
+
+                <div class="main">
+                    <div class="coins" id="coins">
+                        <span class="text">Coins:</span>
+                        <span class="amount">1</span>
+                    </div>
+
+                    <div id="enemyCard" class="cardOnField">
+                        <span class="card hidden" id="enemyChosenCard">
+                            <!-- Enemy chosen card -->
+                        </span>
+                    </div>
+                    <div id="yourCard" class="cardOnField">
+                        <span class="card" id="myChosenCard">
+                            
+                        </span>
+                    </div>
+            
+                    <div class="yourHud hud">
+                        <div class="avatar">
+                            <img src="assets/img/avatar.jpg" alt="Icon">
+                        </div>
+                            <!-- <span class="coins" id="my_coins">Coins: 1</span> -->
+                            <span class="name" id="my_login">Adam</span>
+                        <div class="health" id="yourHealth"><span></span></div>
+                    </div>
+            
+                    <div class="cardsInHand" id="yourCardsInHand">
+                        <!-- cardsInHand -->
+                        <span class="card" id="card0" onclick="onClickCard(0)"></span>
+                        <span class="card" id="card1" onclick="onClickCard(1)"></span>
+                        <span class="card" id="card2" onclick="onClickCard(2)"></span>
+                        
+                    </div>
+            
+                    <div class="enemyHud hud">
+                        <div class="avatar">
+                            <img src="assets/img/avatar.jpg" alt="Icon">
+                        </div>
+                        <!-- <span class="coins" id="enemy_coins">Coins: 1</span> -->
+                        <span class="name" id="enemy_login">Attack Helicopter</span>
+                        <div class="health" id="enemyHealth"><span></span></div>
+                    </div>
+            
+            
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/resizing.js"></script>
+
+    <script src="js/Card.js"></script>
+
+</body>
+
+</html>
