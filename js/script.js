@@ -12,6 +12,9 @@ let coinsObj = document.querySelector('#coins');
 let myCoins = document.getElementById('my_coins');
 let myHud = document.getElementsByClassName('yourHud')[0];
 
+let yourChosenCardAnim = document.getElementById('myChosenCardAnimation');
+let enemyChosenCardAnim = document.getElementById('enemyChosenCardAnimation');
+
 let enemyChosenCard = document.getElementById('enemyChosenCard');
 
 // All cards 
@@ -290,37 +293,76 @@ function onClickAction(card) {
 	let enemyCard = enemyChosenCard;
 
 	if (yourCard.str > enemyCard.str) {
-		console.log('You have won!')
-		callAlert('You have won!');
+		// Animation
 
-		enemyHealth--;
-		renderHp(yourHealth, "yourHealth");
-		renderHp(enemyHealth, "enemyHealth");
+		setTimeout(() => {
+			btnlAnim();
+		}, 600)
+
+		// Rendering and continue
+		setTimeout(() => {
+			console.log('You have won!')
+			callAlert('You have won!');
+
+			enemyHealth--;
+			renderHp(yourHealth, "yourHealth");
+			renderHp(enemyHealth, "enemyHealth");
 
 
-		if (yourHealth == 0 || enemyHealth == 0)
-			winOrLose();
-		else
-			setTimeout(() => {gameRound()}, 2000);
+			if (yourHealth == 0 || enemyHealth == 0)
+				winOrLose();
+			else
+				setTimeout(() => {gameRound()}, 2000);
+
+		}, 3000)
 	} else if (yourCard.str < enemyCard.str) {
-		console.log('You lose!')
-		callAlert('You lose!');
+		// Animation
+		setTimeout(() => {
+			btnlAnim();
+		}, 600)
 
-		yourHealth--;
-		renderHp(yourHealth, "yourHealth");
-		renderHp(enemyHealth, "enemyHealth");
+		// Rendering and continue
+		setTimeout(() => {
+			console.log('You lose!')
+			callAlert('You lose!');
+
+			yourHealth--;
+			renderHp(yourHealth, "yourHealth");
+			renderHp(enemyHealth, "enemyHealth");
 
 
-		if (yourHealth == 0 || enemyHealth == 0)
-			winOrLose();
-		else
-			setTimeout(() => {gameRound()}, 2000);
+			if (yourHealth == 0 || enemyHealth == 0)
+				winOrLose();
+			else
+				setTimeout(() => {gameRound()}, 2000);
+
+		}, 3000)
 	} else if (yourCard.str == enemyCard.str) {
-		console.log('Draw!')
-		callAlert('Draw!');
+		// Animation
+		setTimeout(() => {
+			btnlAnim();
+		}, 600)
 
-		setTimeout(() => {gameRound()}, 2000);
-	} 
+		// Rendering and continue
+		setTimeout(() => {
+			console.log('Draw!')
+			callAlert('Draw!');
+
+			setTimeout(() => {gameRound()}, 2000);
+		}, 3000)
+	}
+
+	function btnlAnim() {
+		yourChosenCardAnim.style.animationName  = 'winYou';
+		enemyChosenCardAnim.style.animationName  = 'winEnemy';
+	}
+
+	// Returning cards to their places after animation
+
+	setTimeout(() => {
+		yourChosenCardAnim.style.animationName  = 'none';
+		enemyChosenCardAnim.style.animationName  = 'none';
+	}, 5000)
 
 	// clearing array of chosing card
 
@@ -393,7 +435,6 @@ function gameRound() {
 	enemyChosenCard.classList.add('hidden');
 
 	stopTimerForRandom = false;
-	let timer;
 
 	checkClick = false;
 
@@ -418,17 +459,6 @@ function gameRound() {
 		let timerSeconds = 7;
 		setTimer(timerSeconds);
 		choseCardOn();
-
-		// let timerForRandom = setTimeout(() => {
-		// 	if (!checkClick) {
-		// 		if (stopTimerForRandom) {
-		// 			clearTimeout(timerForRandom);
-		// 		}
-
-		// 		clearTimerRandom();
-		// 		checkClick = false;
-		// 	}	
-		// }, timerSeconds*1000);
 
 	}, 1500);
 }

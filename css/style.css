@@ -116,6 +116,9 @@ main {
 }
 
 
+.cardOnFieldAnimationContainer {
+    transition: .4s transform;
+}
 #enemyCard {
     top: 5%;
     left: 5%;
@@ -403,4 +406,89 @@ span.card {
 .cardsInHand .cardStats span {
     margin-top: 3.2px;
     font-size: 11px;
+}
+
+/*Cards battle animation*/
+
+.cardOnFieldAnimationContainer {
+    animation-duration: 3s;
+    transition-timing-function: ease-in;
+}
+
+#enemyChosenCardAnimation {
+
+}
+
+#myChosenCardAnimation {
+
+}
+
+@keyframes winYou {
+    2% {
+        transform: translate(0);
+        animation-timing-function: cubic-bezier(0.060, 0.210, 0.000, 1.000);
+    }
+
+    10% {
+        transform: translate(20%, 15%) rotate(15deg) scale(1.5);
+        animation-timing-function: cubic-bezier(0.550, 0.000, 1.000, 0.400);
+    }
+
+    19% {
+        transform: translate(-110%, -55%) rotate(-13deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.000, 0.505, 0.330, 1.005);
+    }
+
+    28% {
+        transform: translate(-50%, -25%) rotate(5deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.300, 0.005, 0.660, 1.000);
+    }
+
+    38% {
+        transform: translate(-65%, -35%) rotate(0deg) scale(.9);
+    }
+
+    51% {
+        transform: translate(-65%, -35%) rotate(0deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.510, 0.010, 0.425, 1.000);
+    }
+
+    70% {
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes winEnemy {
+    0% {
+        transform: translate(0);
+        animation-timing-function: cubic-bezier(0.060, 0.210, 0.000, 1.000);
+    }
+
+    8% {
+        transform: translate(-20%, -15%) rotate(-5deg) scale(1.27);
+        animation-timing-function: cubic-bezier(0.550, 0.000, 1.000, 0.400);
+    }
+
+    19% {
+        transform: translate(110%, 55%) rotate(140deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.000, 0.505, 0.330, 1.005);
+    }
+
+    37% {
+        transform: translate(30%, 15%) rotate(-17deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.300, 0.005, 0.660, 1.000);
+    }
+
+    47% {
+        transform: translate(65%, 35%) rotate(0deg) scale(.9);
+    }
+
+    52% {
+        transform: translate(65%, 33%) rotate(0deg) scale(.9);
+        animation-timing-function: cubic-bezier(0.510, 0.010, 0.425, 1.000);
+    }
+
+    67% {
+        transform: translate(0) rotate(0deg) scale(1);
+    }
 }
