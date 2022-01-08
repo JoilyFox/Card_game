@@ -144,6 +144,13 @@ function renderEnemyActiveCard(obj) {
 
 function renderCoins(coins) {
 	coinsAmount.innerHTML = coins;
+	if (coins < 5 && coins != 1) {
+		document.getElementById('coinsAmount').style.animationName  = 'encreaseCoinsAmount';
+
+		setTimeout(() => {
+			document.getElementById('coinsAmount').style.animationName  = '';
+		}, 700);
+	}
 }
 
 	// render hp
@@ -292,11 +299,11 @@ function onClickAction(card) {
 	let yourCard = yourCards[card];
 	let enemyCard = enemyChosenCard;
 
-	if (yourCard.str > enemyCard.str) {
+	if (yourCard.str > enemyCard.str) { /* Win */
 		// Animation
 
 		setTimeout(() => {
-			btnlAnim();
+			winAnimation_1();
 		}, 600)
 
 		// Rendering and continue
@@ -315,10 +322,10 @@ function onClickAction(card) {
 				setTimeout(() => {gameRound()}, 2000);
 
 		}, 3000)
-	} else if (yourCard.str < enemyCard.str) {
+	} else if (yourCard.str < enemyCard.str) { /* Lose */
 		// Animation
 		setTimeout(() => {
-			btnlAnim();
+			loseAnimation_1();
 		}, 600)
 
 		// Rendering and continue
@@ -337,10 +344,10 @@ function onClickAction(card) {
 				setTimeout(() => {gameRound()}, 2000);
 
 		}, 3000)
-	} else if (yourCard.str == enemyCard.str) {
+	} else if (yourCard.str == enemyCard.str) { /* Draw */
 		// Animation
 		setTimeout(() => {
-			btnlAnim();
+			drawAnimation_1();
 		}, 600)
 
 		// Rendering and continue
@@ -352,9 +359,33 @@ function onClickAction(card) {
 		}, 3000)
 	}
 
-	function btnlAnim() {
-		yourChosenCardAnim.style.animationName  = 'winYou';
-		enemyChosenCardAnim.style.animationName  = 'winEnemy';
+	// Battle animations
+
+		// Draw
+
+	function drawAnimation_1() {
+		yourChosenCardAnim.style.animationName  = 'yourCard_draw';
+		enemyChosenCardAnim.style.animationName  = 'enemyCard_draw';
+		console.log('1')
+	}
+	function drawAnimation_2() {
+		yourChosenCardAnim.style.animationName  = 'yourCard_draw';
+		enemyChosenCardAnim.style.animationName  = 'enemyCard_draw';
+		console.log('2')
+	}
+
+		// Win
+
+	function winAnimation_1() {
+		yourChosenCardAnim.style.animationName  = 'yourCard_draw';
+		enemyChosenCardAnim.style.animationName  = 'enemyCard_draw';
+	}
+
+		// Lose
+
+	function loseAnimation_1() {
+		yourChosenCardAnim.style.animationName  = 'yourCard_draw';
+		enemyChosenCardAnim.style.animationName  = 'enemyCard_draw';
 	}
 
 	// Returning cards to their places after animation
@@ -410,10 +441,12 @@ function onClickCard(number) {
 function choseCardOn() {
 	var deck = document.getElementById('yourCardsInHand');
 	deck.classList.add('choseCard');
+	document.getElementsByClassName('centeringCardsInHand')[0].style.bottom = '15%';
 }
 function choseCardOff() {
 	var deck = document.getElementById('yourCardsInHand');
 	deck.classList.remove('choseCard');
+	document.getElementsByClassName('centeringCardsInHand')[0].style.bottom = '5%';
 }
 
 

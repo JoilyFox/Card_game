@@ -1,3 +1,10 @@
+/*Vars*/
+
+html {
+    --card-distance-to-border: 20px;
+    --main-width: 1920px;
+}
+
 /*Technical styles*/
 
 .absolute {
@@ -13,6 +20,23 @@
 }
 
 /* --- */
+
+/*Full size styles*/
+
+.fullSize {
+    width: 100vw !important;
+}
+
+/*.fullSize .cardsInHand {*/
+/*    right: calc(100vw - 72vw - var(--cards-in-hand-width)) !important;*/
+/*    transform-origin: bottom;*/
+/*}*/
+
+/*.fullSize .cardsInHand.choseCard {*/
+/*    right: calc(100vw - 67.5vw - var(--cards-in-hand-width)) !important;*/
+/*}*/
+
+/*Styles*/
 
 html {
     overflow: hidden;
@@ -97,6 +121,24 @@ main {
 }
 .coins.z {
     z-index: 5;
+}
+#coinsAmount {
+    animation-duration: .5s;
+    transition-timing-function: ease-in;
+}
+
+@keyframes encreaseCoinsAmount {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .cardOnField {
@@ -247,17 +289,24 @@ main {
 }
 
 
+.centeringCardsInHand {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    justify-content: center;
+    transition: .3s;
+    bottom: 5%;
+}
+
 .cardsInHand {
     transition: .3s;
-    justify-content: flex-start;
-    position: absolute;
+    justify-content: center;
     width: 433px;
     height: 153px;
     display: flex;
     flex-direction: row;
-    bottom: 5%;
-    right: 27%;
-    transform-origin: right bottom;
+    transform-origin: bottom;
 }
 .cardsInHand .card {
     transform: rotate(15deg);
@@ -278,7 +327,7 @@ main {
 .cardsInHand .card.active {
     bottom: 0.2px;
     position: absolute;
-    transform: scale(2.5) translate(179%);
+    transform: scale(2.5) translate(calc(160%));
     filter: drop-shadow(8.8px 12.8px 0px #000000) !important;
 }
 
@@ -423,7 +472,11 @@ span.card {
 
 }
 
-@keyframes winYou {
+/*Battle animations*/
+
+    /*Draw*/
+
+@keyframes yourCard_draw {
     2% {
         transform: translate(0);
         animation-timing-function: cubic-bezier(0.060, 0.210, 0.000, 1.000);
@@ -458,7 +511,7 @@ span.card {
     }
 }
 
-@keyframes winEnemy {
+@keyframes enemyCard_draw {
     0% {
         transform: translate(0);
         animation-timing-function: cubic-bezier(0.060, 0.210, 0.000, 1.000);
